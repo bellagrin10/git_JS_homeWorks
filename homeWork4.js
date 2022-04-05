@@ -36,15 +36,17 @@ console.log(new Converting(1000))
 //    c. Перенести функционал подсчета корзины на объектно-ориентированную базу.
 
 const ProductProto = {
-    basketPrice() {
+    calcPrice() {
         return this.price * this.amount
     }
 }
+
 function Product(product_name, price, amount) {
     this.product_name = product_name
     this.price = price
     this.amount = amount
 }
+
 Product.prototype = ProductProto
 
 let basket = [
@@ -54,11 +56,41 @@ let basket = [
 ]
 console.log(basket)
 
-countBasketPrice = 0
+total = 0
 for (let item of basket) {
-    countBasketPrice += item.basketPrice()
+    total += item.calcPrice()
 }
-console.log(countBasketPrice)
+console.log(total)
+
+// тоже самое с помощью класса
+
+class Products {
+
+    constructor(product_name, price, amount) {
+        this.product_name = product_name
+        this.price = price
+        this.amount = amount
+    }
+
+    calcPrice() {
+        return this.price * this.amount
+    }
+
+    static countBasketPrice(basket) {
+        total = 0
+        for (let item of basket) {
+            total += item.calcPrice()
+        }
+        return total
+    }
+}
+
+let basket2 = [
+    new Products('E', 200.00, 5),
+    new Products('F', 50.00, 2),
+    new Products('G', 150.50, 4)
+]
+console.log(Products.countBasketPrice(basket2))
 
 // 3. * Подумать над глобальными сущностями. К примеру, сущность «Продукт» в
 // интернет-магазине актуальна не только для корзины, но и для каталога. Стремиться нужно к
