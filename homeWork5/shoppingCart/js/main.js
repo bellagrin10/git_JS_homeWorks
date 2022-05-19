@@ -1,7 +1,6 @@
 // Shop
 
 let $shop = document.querySelector('.shop container')
-
 let $shopItems = document.querySelector('.shop-content')
 
 // Showcase Products
@@ -106,7 +105,6 @@ if (cartProducts.length > 0) {
   })
 } else {
   // Empty Cart
-
   let $cartTitle = document.querySelector('.cart-title')
   let $EmptyTextNode = document.createTextNode(' Is Empty')
   $cartTitle.appendChild($EmptyTextNode)
@@ -115,7 +113,6 @@ if (cartProducts.length > 0) {
 }
 
 // Update Total
-
 
 let quantity = cartProducts.reduce((acc, product) => {
   return (acc + product.quantity)
