@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess board</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="board"></div>
+    <script>
+        function addElement() {
+            const $board = document.querySelector('.board')
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    let newDiv = document.createElement('DIV')
+                    newDiv.setAttribute('class', 'cell')
+                    if (i % 2 == j % 2)
+                        newDiv.classList.add('black')
+                    $board.append(newDiv)
+                }
+                let $number = document.createElement('DIV')
+                $number.setAttribute('class', 'number')
+                $number.textContent = i + 1
+                $board.append($number)
+            }
+            for (let i = 0; i < 8; i++) {
+                let $letter = document.createElement('DIV')
+                $letter.setAttribute('class', 'letter')
+                $letter.textContent = String.fromCharCode(65 + i)
+                $board.append($letter)
+            }
+            const $endBox = document.createElement('DIV')
+            $endBox.setAttribute('class', 'endBox')
+            $board.append($endBox)
+        }
+        addElement()
+    </script>
+</body>
+
+</html>
